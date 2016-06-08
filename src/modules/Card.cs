@@ -37,9 +37,12 @@ namespace IRC
              */
             public static void OnMessage (string user, string room, string text)
             {
-                if (current == 50)
+                if (!current.ContainsKey(room))
+                    current[room] = 50;
+
+                if (current[room] == 50)
                 {
-                    remaining = new string[]
+                    remaining[room] = new string[]
                     {
                         "Ace of clubs",
                         "Two of clubs",
@@ -100,12 +103,12 @@ namespace IRC
                         "Joker"
                     };
                     
-                    remaining = remaining.OrderBy(n => random.Next()).ToArray();
+                    remaining[room] = remaining[room].OrderBy(n => random.Next()).ToArray();
                     
-                    current   = 0;
+                    current[room]   = 0;
                 }
                 
-                Anxious.Send(room, "Deals a <" + remaining[current++] + "> to " + Title.GetTitle(user) + ".");
+                Anxious.Send(room, "Deals a <" + remaining[room][current[room]++] + "> to " + Title.GetTitle(user) + ".");
             }
             
         #endregion
@@ -127,12 +130,9 @@ namespace IRC
                 }
             }
             
-            public static int      current   = 50;
-            
-            public static string[] remaining = new string[]
-            {
-                
-            };
+            public static Dictionary<string, int> current = new Dictionary<string, int>();
+
+            public static Dictionary<string, string[]> remaining = new Dictionary<string, string[]>();
         #endregion
     }
 }
