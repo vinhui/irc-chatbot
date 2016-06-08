@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E3F799E-AF48-4947-AA90-BA338E6E0176}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IRC</RootNamespace>
+    <AssemblyName>irc-chatbot</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="data\.gitignore" />
+    <Content Include="data\blacklist.txt" />
+    <Content Include="data\genres.txt" />
+    <Content Include="data\jokes.txt" />
+    <Content Include="data\messages.txt" />
+    <Content Include="data\offenses.txt" />
+    <Content Include="data\people.txt" />
+    <Content Include="data\questions.txt" />
+    <Content Include="data\sayings.txt" />
+    <Content Include="data\themes.txt" />
+    <Content Include="data\titles.txt" />
+    <Content Include="kernel\.gitignore" />
+    <Content Include="logins\.gitignore" />
+    <Content Include="modules\.gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="kernel\Configuration.cs" />
+    <Compile Include="kernel\Parser.cs" />
+    <Compile Include="modules\Anxious.cs" />
+    <Compile Include="modules\Card.cs" />
+    <Compile Include="modules\Cat.cs" />
+    <Compile Include="modules\Coin.cs" />
+    <Compile Include="modules\Die.cs" />
+    <Compile Include="modules\Fallout4.cs" />
+    <Compile Include="modules\Genre.cs" />
+    <Compile Include="modules\Google.cs" />
+    <Compile Include="modules\Hate.cs" />
+    <Compile Include="modules\Header.cs" />
+    <Compile Include="modules\Help.cs" />
+    <Compile Include="modules\Joke.cs" />
+    <Compile Include="modules\Metacritic.cs" />
+    <Compile Include="modules\News.cs" />
+    <Compile Include="modules\Permission.cs" />
+    <Compile Include="modules\Question.cs" />
+    <Compile Include="modules\Reddit.cs" />
+    <Compile Include="modules\Remind.cs" />
+    <Compile Include="modules\Stackoverflow.cs" />
+    <Compile Include="modules\Title.cs" />
+    <Compile Include="modules\Tumblr.cs" />
+    <Compile Include="modules\Wikipedia.cs" />
+    <Compile Include="modules\Wisdom.cs" />
+    <Compile Include="modules\Youtube.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
