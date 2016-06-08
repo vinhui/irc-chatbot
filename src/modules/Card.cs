@@ -38,77 +38,35 @@ namespace IRC
             public static void OnMessage (string user, string room, string text)
             {
                 if (!current.ContainsKey(room))
-                    current[room] = 50;
-
-                if (current[room] == 50)
+                    current[room] = allCards.Length;
+                
+                if (current[room] < 0)
                 {
-                    remaining[room] = new string[]
-                    {
-                        "Ace of clubs",
-                        "Two of clubs",
-                        "Three of clubs",
-                        "Four of clubs",
-                        "Five of clubs",
-                        "Six of clubs",
-                        "Seven of clubs",
-                        "Eight of clubs",
-                        "Nine of clubs",
-                        "Ten of clubs",
-                        "Jack of clubs",
-                        "Queen of clubs",
-                        "King of clubs",
-                        
-                        "Ace of diamonds",
-                        "Two of diamonds",
-                        "Three of diamonds",
-                        "Four of diamonds",
-                        "Five of diamonds",
-                        "Six of diamonds",
-                        "Seven of diamonds",
-                        "Eight of diamonds",
-                        "Nine of diamonds",
-                        "Ten of diamonds",
-                        "Jack of diamonds",
-                        "Queen of diamonds",
-                        "King of diamonds",
-                        
-                        "Ace of spades",
-                        "Two of spades",
-                        "Three of spades",
-                        "Four of spades",
-                        "Five of spades",
-                        "Six of spades",
-                        "Seven of spades",
-                        "Eight of spades",
-                        "Nine of spades",
-                        "Ten of spades",
-                        "Jack of spades",
-                        "Queen of spades",
-                        "King of spades",
-                        
-                        "Ace of hearts",
-                        "Two of hearts",
-                        "Three of hearts",
-                        "Four of hearts",
-                        "Five of hearts",
-                        "Six of hearts",
-                        "Seven of hearts",
-                        "Eight of hearts",
-                        "Nine of hearts",
-                        "Ten of hearts",
-                        "Jack of hearts",
-                        "Queen of hearts",
-                        "King of hearts",
-                        
-                        "Joker"
-                    };
-                    
-                    remaining[room] = remaining[room].OrderBy(n => random.Next()).ToArray();
-                    
-                    current[room]   = 0;
+                    Shuffle(room);
                 }
                 
-                Anxious.Send(room, "Deals a <" + remaining[room][current[room]++] + "> to " + Title.GetTitle(user) + ".");
+                Anxious.Send(room, "Deals a <" + remaining[room][--current[room]] + "> to " + Title.GetTitle(user) + ".");
+            }
+
+            public static void Shuffle(string user, string room)
+            {
+                if(remaining[room].Length < allCards.Length - 10)
+                {
+                    Shuffle(room);
+                    Anxious.Send(room, Title.GetTitle(user) + " has shuffled the deck.");
+                }
+                else
+                {
+                    Anxious.Send(room, "Sorry " + Title.GetTitle(user) + ", the deck is too fresh for shuffling.");
+                }
+            }
+
+            private static void Shuffle(string room)
+            {
+                Array.Copy(allCards, remaining[room], allCards.Length);
+
+                remaining[room] = remaining[room].OrderBy(n => random.Next()).ToArray();
+                current[room] = allCards.Length;
             }
             
         #endregion
@@ -133,6 +91,67 @@ namespace IRC
             public static Dictionary<string, int> current = new Dictionary<string, int>();
 
             public static Dictionary<string, string[]> remaining = new Dictionary<string, string[]>();
+
+            public static string[] allCards = new string[]
+            {
+                "Ace of clubs",
+                "Two of clubs",
+                "Three of clubs",
+                "Four of clubs",
+                "Five of clubs",
+                "Six of clubs",
+                "Seven of clubs",
+                "Eight of clubs",
+                "Nine of clubs",
+                "Ten of clubs",
+                "Jack of clubs",
+                "Queen of clubs",
+                "King of clubs",
+
+                "Ace of diamonds",
+                "Two of diamonds",
+                "Three of diamonds",
+                "Four of diamonds",
+                "Five of diamonds",
+                "Six of diamonds",
+                "Seven of diamonds",
+                "Eight of diamonds",
+                "Nine of diamonds",
+                "Ten of diamonds",
+                "Jack of diamonds",
+                "Queen of diamonds",
+                "King of diamonds",
+
+                "Ace of spades",
+                "Two of spades",
+                "Three of spades",
+                "Four of spades",
+                "Five of spades",
+                "Six of spades",
+                "Seven of spades",
+                "Eight of spades",
+                "Nine of spades",
+                "Ten of spades",
+                "Jack of spades",
+                "Queen of spades",
+                "King of spades",
+
+                "Ace of hearts",
+                "Two of hearts",
+                "Three of hearts",
+                "Four of hearts",
+                "Five of hearts",
+                "Six of hearts",
+                "Seven of hearts",
+                "Eight of hearts",
+                "Nine of hearts",
+                "Ten of hearts",
+                "Jack of hearts",
+                "Queen of hearts",
+                "King of hearts",
+
+                "Joker"
+            };
         #endregion
     }
 }
