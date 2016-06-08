@@ -1,0 +1,50 @@
+set in a Abyss
+set in a Bar
+set in a Cave
+set in a Fjord
+set in a Marsh
+set in a pool
+set in a River
+set in a school
+set in a shopping mall
+set in a Valley
+set in a Volcano
+set in America
+set in an office building
+set in Asia
+set in Austrlia
+set in Canada
+set in Chernobyl
+set in China
+set in Europe
+set in France
+set in neolithic-age
+set in Russia
+set in Syria
+set in the alpes
+set in the bronze-age
+set in the desert
+set in the forest
+set in the future
+set in the human body
+set in the iron-age
+set in the jungle
+set in the middle-ages
+set in the sea
+set in the sky
+set in the snow
+set in the stone-age
+set in the tropic
+set on a boat
+set on a cruiser
+set on a plane
+set on a rocket
+set on a spaceship
+set on a submarine
+set on a train
+set on Mars
+set on the highway
+set on the moon
+set on the Sun
+set underground
+set underwater
