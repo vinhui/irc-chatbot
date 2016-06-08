@@ -42,6 +42,7 @@ namespace IRC
                 
                 if (current[room] <= 0)
                 {
+                    Anxious.Send(room, "There are no cards remaining in the deck, shuffling it.");
                     Shuffle(room);
                 }
                 
@@ -58,6 +59,18 @@ namespace IRC
                 else
                 {
                     Anxious.Send(room, "Sorry " + Title.GetTitle(user) + ", the deck is too fresh for shuffling.");
+                }
+            }
+
+            public static void Remaining(string user, string room)
+            {
+                if(remaining.ContainsKey(room))
+                {
+                    Anxious.Send(room, "There are " + current[room] + " cards in the current deck.");
+                }
+                else
+                {
+                    Anxious.Send(room, "This room doesn't have a deck yet.");
                 }
             }
 
