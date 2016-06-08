@@ -38,9 +38,9 @@ namespace IRC
             public static void OnMessage (string user, string room, string text)
             {
                 if (!current.ContainsKey(room))
-                    current[room] = allCards.Length;
+                    current[room] = 0;
                 
-                if (current[room] < 0)
+                if (current[room] <= 0)
                 {
                     Shuffle(room);
                 }
@@ -63,6 +63,9 @@ namespace IRC
 
             private static void Shuffle(string room)
             {
+                if (!remaining.ContainsKey(room))
+                    remaining[room] = new string[0];
+
                 Array.Copy(allCards, remaining[room], allCards.Length);
 
                 remaining[room] = remaining[room].OrderBy(n => random.Next()).ToArray();
