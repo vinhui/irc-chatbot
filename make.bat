@@ -1,47 +1,52 @@
 
+:: @project >> Internet Relay Chat
+:: @authors >> DeeQuation
+:: @version >> 04.00.00
+:: @release >> 08.06.16
+:: @licence >> MIT
+
 @echo off
 
-:: Checks if there's already a ~\bin\ directory.
-if exist "%cd%\bin\" (
+:: Checks if there's already a ~\bin\ directory and recover files.
+if exist "bin\" (
     
-    if exist "%cd%\bin\log\" (
+    if exist "bin\logs\" (
         
-        for %%f in (bin\log\*.txt) do (
-            
-            xcopy /s /y %%f src\log\ > nul
-        )
+		for %%f in ("bin\logs\*.txt") do (
+			
+			xcopy /s /y %%f "src\logs\" > nul
+		)
     )
     
-    if exist "%cd%\bin\data\" (
-        
-        for %%f in (bin\data\*.txt) do (
-            
-            xcopy /s /y %%f src\data\ > nul
-        )
+    if exist "bin\data\" (
+		
+		for %%f in ("bin\data\*.txt") do (
+			
+			xcopy /s /y %%f "src\data\" > nul
+		)
     )
-    
-    rd "%cd%\bin\" /s /q
+	
+	rd "bin\" /s /q
 )
 
-:: Creates the bin directory hierarchy.
+:: Recreates the ~\bin\ directory and hierarchy.
 mkdir bin
-mkdir bin\log
-mkdir bin\login
+mkdir bin\logs
+mkdir bin\logins
 
-:: Compiles the base executable with the default parser.
-csc /out:bin\base.exe "src\base\*.cs" "src\module\*.cs" "src\system\*.cs"
+:: Compiles the base executable and packages in the ~\bin\ directory.
+csc /out:bin\base.exe "src\kernels\*.cs" "src\modules\*.cs"
 
 :: Moves all login files to the ~\bin\login\ directory.
-for %%f in (src\login\*.txt) do (
-    
-    xcopy /s /y %%f bin\login\ > nul
+for %%f in ("src\logins\*.txt") do (
+	
+	xcopy /s /y %%f "bin\logins\" > nul
 )
 
 :: Moves all login files to the ~\bin\login\ directory.
-for %%f in (src\data\*.txt) do (
-    
-    xcopy /s /y %%f bin\data\ > nul
+for %%f in ("src\data\*.txt") do (
+	
+	xcopy /s /y %%f "bin\data\" > nul
 )
 
 pause
-

@@ -500,22 +500,6 @@ namespace IRC
                 }
                 
                 // -------------------------------------------------------------
-                // Giphy      {giphy}
-                // -------------------------------------------------------------
-                
-                if ((match = Regex.Match(text, @"^(giphy)", RegexOptions.IgnoreCase)).Success)
-                {
-                    Giphy.OnMessage
-                    (
-                        user,
-                        room,
-                        text
-                    );
-                    
-                    return;
-                }
-                
-                // -------------------------------------------------------------
                 // Help      {help, command, commands, overview, credit, manual}
                 // -------------------------------------------------------------
                 
