@@ -1,0 +1,6 @@
+
+/bin/
+
+/src/kernels/*.cs
+/src/logins/*.txt
+/src/logs/*.txt
