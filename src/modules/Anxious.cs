@@ -2,8 +2,8 @@
 /**
  *  @project >> Internet Relay Chat: Chatbot
  *  @authors >> DeeQuation, SaraDR
- *  @version >> 02.00.06
- *  @release >> 03.06.16
+ *  @version >> 02.00.07
+ *  @release >> 12.06.16
  *  @licence >> MIT
  */
 
@@ -40,25 +40,25 @@ namespace IRC
                 Permission.OnApplicationStart();
                 
                 // -------------------------------------------------------------
-                // Genre                                  {genre.txt, theme.txt}
+                // Genre                    {genres.txt, themes.txt, people.txt}
                 // -------------------------------------------------------------
                 
                 Genre.OnApplicationStart();
                 
                 // -------------------------------------------------------------
-                // Joke                                               {joke.txt}
+                // Joke                                              {jokes.txt}
                 // -------------------------------------------------------------
                 
                 Joke.OnApplicationStart();
                 
                 // -------------------------------------------------------------
-                // Wisdom                                           {wisdom.txt}
+                // Wisdom                                          {sayings.txt}
                 // -------------------------------------------------------------
                 
                 Wisdom.OnApplicationStart();
                 
                 // -------------------------------------------------------------
-                // Title                                             {title.txt}
+                // Title                                            {titles.txt}
                 // -------------------------------------------------------------
                 
                 Title.OnApplicationStart();
@@ -70,7 +70,7 @@ namespace IRC
                 Hate.OnApplicationStart();
                 
                 // -------------------------------------------------------------
-                // Question                                       {question.txt}
+                // Question                                      {questions.txt}
                 // -------------------------------------------------------------
                 
                 Question.OnApplicationStart();
@@ -500,10 +500,10 @@ namespace IRC
                 }
                 
                 // -------------------------------------------------------------
-                // Help      {help, command, commands, overview, credit, manual}
+                // Help     {help, command, commands, overview, credits, manual}
                 // -------------------------------------------------------------
                 
-                if ((match = Regex.Match(text, @"^(help|command|commands|overview|credit|manual)", RegexOptions.IgnoreCase)).Success)
+                if ((match = Regex.Match(text, @"^(help|command|commands|overview|credits|manual)", RegexOptions.IgnoreCase)).Success)
                 {
                     Help.OnMessage
                     (
