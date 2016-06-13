@@ -51,7 +51,7 @@ namespace IRC
 
             public static void Shuffle(string user, string room)
             {
-                if(remaining[room].Length < allCards.Length - 10)
+                if(current[room] < allCards.Length - 10)
                 {
                     Shuffle(room);
                     Anxious.Send(room, Title.GetTitle(user) + " has shuffled the deck.");
@@ -77,7 +77,7 @@ namespace IRC
             private static void Shuffle(string room)
             {
                 if (!remaining.ContainsKey(room))
-                    remaining[room] = new string[0];
+                    remaining[room] = new string[allCards.Length];
 
                 Array.Copy(allCards, remaining[room], allCards.Length);
 
